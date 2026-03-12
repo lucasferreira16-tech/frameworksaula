@@ -2,9 +2,12 @@ import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/shared/databases/prisma.database";
 
 @Injectable() 
-export class FindAllTodoRepository {
+export class FindUniqueTodoRepository {
     constructor(private readonly prisma: PrismaService) {}
-    async findUnique(){
-        return await this.prisma.todo.findUnique()
+
+    async findByd(id: string) {
+        return await this.prisma.todo.findUnique({
+            where: { id },
+        });
     }
 }
