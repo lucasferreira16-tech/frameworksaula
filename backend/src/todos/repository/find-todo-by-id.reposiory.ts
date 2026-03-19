@@ -5,7 +5,7 @@ import { PrismaService } from "src/shared/databases/prisma.database";
 export class FindUniqueTodoRepository {
     constructor(private readonly prisma: PrismaService) {}
 
-    async findByd(id: string) {
+    async findById(id: string) {
         return await this.prisma.todo.findUnique({
             where: { id },
         });
