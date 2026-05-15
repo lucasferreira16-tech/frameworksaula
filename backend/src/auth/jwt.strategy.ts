@@ -4,14 +4,14 @@ import {ExtractJwt, Strategy} from "passport-jwt"
 
 import {PassportStrategy} from "@nestjs/passport"
 
-// aqui é o 
+ 
 type JwtPayload = {
     sub: string;
     email: string;
 };
 
 @Injectable()
-export class JwtStrategy extend PassportStrategy(Strategy) {
+export class JwtStrategy extends PassportStrategy(Strategy) {
     constructor() {  
 
     super({
@@ -19,12 +19,12 @@ export class JwtStrategy extend PassportStrategy(Strategy) {
         ignoreExpiration: false,
         secretOrKey: process.env.JWT_SECRET as string,
     });
-      }
+  }
 
        validate(payload: JwtPayload) {
         return {
-            id: PayloadTooLargeException.sub,
-            email: PayloadTooLargeException.email,
+            id: payload.sub,
+            email: payload.email,
         }
       }
 }
