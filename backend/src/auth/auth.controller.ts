@@ -8,7 +8,7 @@ import { LoginDto } from "./dto/login.dto";
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 @Post('Register')
-async register(@Body() body: RegisterDto) {
+async register(@Body() data: RegisterDto) {
     return await this.authService.register(data);
 }
 
